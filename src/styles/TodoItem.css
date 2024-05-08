@@ -1,0 +1,41 @@
+/* src/components/TodoItem.css */
+.todo-item {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .todo-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+    vertical-align: top; /* Align checkbox with the top */
+    margin-top: 8px;
+  }
+  
+  .title-container {
+    flex-grow: 1; /* Allow to grow */
+    cursor: pointer;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .description {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+    display: none; /* Hide by default */
+  }
+  
+  .todo-item.expanded .description {
+    display: block; /* Show when expanded */
+  }
+  
+.title.completed {
+  text-decoration: line-through;
+}
