@@ -3,7 +3,6 @@ import TodoItem from "./TodoItem";
 import { Todo } from "../types/Todo";
 import "../styles/TodoList.css";
 import { useMemo, useState } from "react";
-import { FixedSizeList as List } from "react-window";
 
 interface TodoListProps {
   todos: Todo[];
@@ -16,7 +15,6 @@ enum Filter {
   Active = "active",
 }
 
-// Use Memoization to cache the results of previous renders, avoiding unnecessary re-renders when props or state haven't changed.
 function TodoList({ todos, toggleTodo }: TodoListProps) {
   const [filter, setFilter] = useState<Filter>(Filter.All);
 
@@ -31,26 +29,14 @@ function TodoList({ todos, toggleTodo }: TodoListProps) {
     }
   });
 
-  const memoizedTodos = useMemo(() => {
-    const Row = ({
-      index,
-      style,
-    }: {
-      index: number;
-      style: React.CSSProperties;
-    }) => {
-      const todo = filteredTodos[index];
-      return (
-        <div style={style}>
-          <TodoItem todo={todo} toggleTodo={toggleTodo} />
-        </div>
-      );
-    };
+  const memoizedTodoItems = useMemo(
+    () =>
+      filteredTodos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
+      )),
+    [filteredTodos, toggleTodo]
+  );
 
-    return Row;
-  }, [todos, toggleTodo]);
-
-  // Implements virtualized list rendering for efficient performance with large datasets.
   return (
     <div className="todo-list-container">
       <div className="filter-buttons">
@@ -73,14 +59,7 @@ function TodoList({ todos, toggleTodo }: TodoListProps) {
           Active
         </button>
       </div>
-      <List
-        height={400}
-        itemCount={filteredTodos.length}
-        itemSize={50}
-        width={300}
-      >
-        {memoizedTodos}
-      </List>
+      <div className="todo-items">{memoizedTodoItems}</div>
     </div>
   );
 }
