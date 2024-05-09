@@ -18,6 +18,7 @@ function App() {
 
   // Update local storage when todos state changes
   useEffect(() => {
+    // Batched operation to update local storage
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
