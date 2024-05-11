@@ -42,3 +42,7 @@
 .title.completed {
   text-decoration: line-through;
 }
+
+.todo-items {
+  min-width: 300px;
+}
