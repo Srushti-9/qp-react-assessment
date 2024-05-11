@@ -15,9 +15,9 @@ To run the Todo application locally, follow these steps:
 
 1. Clone this repository to your local machine:
 
-   ```bash
-   git clone https://github.com/Srushti-9/qp-react-assessment.git
-   ```
+```bash
+git clone https://github.com/Srushti-9/qp-react-assessment.git
+```
 
 2. Navigate to the project directory:
 
@@ -78,3 +78,5 @@ Test cases have been designed and implemented to ensure the reliability and robu
 ```
 npm test
 ```
+
+Feel free to contribute to this project or report any issues by creating a pull request or raising an issue in the repository. Thank you for using the Todo application!
