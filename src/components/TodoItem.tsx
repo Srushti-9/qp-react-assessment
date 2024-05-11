@@ -27,7 +27,11 @@ function TodoItem({ todo, toggleTodo }: TodoItemProps) {
       />
       <div className="title-container" onClick={handleTitleClick}>
         <span className={`title ${titleClass}`}>{todo.text}</span>
-        {expanded && <p className="todo-description">{todo.description}</p>}
+        {expanded && (
+          <p className="todo-description" data-testid="todo-description">
+            {todo.description}
+          </p>
+        )}
       </div>
     </div>
   );
